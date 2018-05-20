@@ -15,7 +15,6 @@ void MyStack::print(){
     for(auto elem: elem_array){
         cout<<elem << ",";
     }
-    cout<<endl;
 }
 int MyStack::size(){
     return elem_array.size();
@@ -50,7 +49,7 @@ class ArrayStack{
         int * elem_array;
         int len ;
 };
-
+/*
 int main(){
     MyStack st;
     st.push(2);
@@ -81,5 +80,4 @@ int main(){
     st4.print();
 }
 
-
-
+*/

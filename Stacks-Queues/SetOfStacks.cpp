@@ -16,12 +16,19 @@ class SetOfStacks{
 void SetOfStacks::print(){
     for(auto each_stack: stack_array){
         each_stack->print();
+        cout<<" | ";
     }
+    cout<<endl;
+
 }
 int SetOfStacks::pop(){
     int number_stacks = stack_array.size();
     MyStack* last_stack = stack_array[number_stacks-1];
-    return last_stack->pop();
+    int temp = last_stack->pop();
+    if (last_stack->size() == 0){
+        stack_array.erase(--stack_array.end());
+    }
+    return temp;
 }
 
 void SetOfStacks::push(int val){
@@ -55,8 +62,23 @@ int main(){
     st.push(4);
     st.push(9);
     st.push(41);
+    st.print();
     st.push(5);
     st.push(67);
+    st.print();
+    st.pop();
+    st.pop();
+    st.pop();
+    st.print();
+    st.pop();
+    st.print();
+    SetOfStacks& st2 = st;
+    st2.print();
+    st2.pop();
+    st2.print();
+    st.print();
+    st2.pop();
+    st2.print();
     st.print();
 }
 

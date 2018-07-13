@@ -6,6 +6,9 @@ using namespace std;
 struct LLNode{
     int value;
     LLNode* next_ptr;
+    ~LLNode(){
+        cout<<"Calling LLNode destructor"<<endl;
+    }
 };
 
 
@@ -37,9 +40,7 @@ class MyLinkedList{
         LLNode *dangle = prev_ptr->next_ptr;
         LLNode *tmp_ptr = prev_ptr->next_ptr->next_ptr;
         prev_ptr->next_ptr = tmp_ptr;
-        cout<<"dangle: "<<dangle<<", value: "<<&dangle->value<<endl;
         delete dangle;
-        cout<<"dangle: "<<dangle<<", value: "<<&dangle->value<<endl;
         return dangle;
     }
 
@@ -60,56 +61,6 @@ class MyLinkedList{
 
 };
 
-
-class LinkedListUniquePtr{
-
-
-    private:
-        LLNode* llist;
-    public:
-    //constructor
-    LinkedListUniquePtr() {
-        llist = NULL;
-    }
-
-    LLNode* push_front(int elem){
-        LLNode * newNode = new LLNode;
-        newNode->value = elem;
-        newNode->next_ptr = llist;
-        llist = newNode;
-        return llist;
-
-    }
-
-    LLNode* delete_node(LLNode* prev_ptr){
-        LLNode *dangle = prev_ptr->next_ptr;
-        LLNode *tmp_ptr = prev_ptr->next_ptr->next_ptr;
-        prev_ptr->next_ptr = tmp_ptr;
-        return dangle;
-    }
-
-
-    void delete_node_through_head(LLNode* &prev_ptr){
-        LLNode *tmp_ptr = prev_ptr->next_ptr->next_ptr;
-        prev_ptr->next_ptr = tmp_ptr;
-
-    }
-
-    void print(){
-        LLNode* iter_ptr = llist;
-        while(iter_ptr !=NULL){
-            cout<<iter_ptr->value<<" ";
-            iter_ptr = iter_ptr->next_ptr;
-        }
-        cout<<endl;
-
-    }
-
-    LLNode* head(){
-        return llist;
-    }
-
-};
 
 int main(){
 

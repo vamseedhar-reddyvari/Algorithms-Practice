@@ -42,6 +42,18 @@ class LinkedListUniquePtr{
 
     }
 
+    void print_trusted(){
+
+        LLNode *curr_ptr = head_ptr.get();
+        while(curr_ptr != NULL){
+            cout<<curr_ptr->value<<", ";
+            curr_ptr = curr_ptr->next_ptr.get();
+        }
+        cout<<endl;
+
+
+    }
+
 };
 
 int main(){
@@ -51,7 +63,7 @@ int main(){
     list->push_front(8);
     list->push_front(12);
     list->push_front(15);
-    list->print();
+    list->print_trusted();
     return 0;
 
 }

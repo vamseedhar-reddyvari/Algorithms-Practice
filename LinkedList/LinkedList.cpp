@@ -36,12 +36,11 @@ class MyLinkedList{
 
     }
 
-    LLNode* delete_node(LLNode* prev_ptr){
+    void delete_node(LLNode* prev_ptr){
         LLNode *dangle = prev_ptr->next_ptr;
         LLNode *tmp_ptr = prev_ptr->next_ptr->next_ptr;
         prev_ptr->next_ptr = tmp_ptr;
         delete dangle;
-        return dangle;
     }
 
 
@@ -59,6 +58,16 @@ class MyLinkedList{
         return llist;
     }
 
+    ~MyLinkedList(){
+      LLNode* iter_ptr = llist;
+      while(iter_ptr != NULL){
+        LLNode* tmp_ptr = iter_ptr->next_ptr ;
+        delete iter_ptr;
+        iter_ptr = tmp_ptr;
+      }
+
+    }
+
 };
 
 
@@ -72,9 +81,9 @@ int main(){
     list->push_front(47);
     list->push_front(48);
     list->print();
-    LLNode* del = list->delete_node(list->head()->next_ptr);
+    list->delete_node(list->head()->next_ptr);
     list->print();
-    cout<<"Deleted Value: "<<del->value<<endl;
+    delete list;
     return 0;
 
 }

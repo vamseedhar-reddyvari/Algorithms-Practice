@@ -1,4 +1,5 @@
 #include<iostream>
+#include<memory>
 
 using namespace std;
 
@@ -43,22 +44,19 @@ class LinkedListUniquePtr{
     }
 
     void print_trusted(){
-
         LLNode *curr_ptr = head_ptr.get();
         while(curr_ptr != NULL){
             cout<<curr_ptr->value<<", ";
             curr_ptr = curr_ptr->next_ptr.get();
         }
         cout<<endl;
-
-
     }
 
 };
 
 int main(){
 
-    LinkedListUniquePtr *list = new LinkedListUniquePtr();
+    unique_ptr<LinkedListUniquePtr> list (new LinkedListUniquePtr());
     list->push_front(2);
     list->push_front(8);
     list->push_front(12);

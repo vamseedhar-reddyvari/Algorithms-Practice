@@ -1,0 +1,15 @@
+\documentclass{article}
+\title{Problems}
+\author{Jane Doe}
+\date{September 2018}
+\begin{document}
+
+\begin{itemize}
+	\item 90 minutes to complete two coding problems. 15 minutes to describe the approach and talk about run-time and memory complexity. 15 minute survey about the experience of taking the assessment.
+	\item The coding questions were similar to any of the online platforms like leetcode, hackerrank..., You need to pass as many test cases as possilbe. The compile and run feature lets you test your code instantly.
+	\item Q1: Given a list of (x,y) coordinates of the nearby steakhouses, return K-number of places that are closest to the user.
+	\item A1: My solution was to use Min-heap and pop K times. This has the complexity of O(K log N) instead of O(N log N) if dealt with a fully sorted array. Another challenge was to retrieve the location and not the distance. So I used an unordered_map; But we can have multiple places at the same distance, so I used unorderedmultimap. I passed all test cases. One big mistake that I made was, during my "describe approach", i said the run time complexity was O(N log N) as I forgot that forming a heap is only O(log N) and each pop is O(log N). Stupid me. I should have handled the time pressure better.
+	\item Q2: Given a 2D grid of cells with 3 possible values, 1 (road-connected), 0(no road) and 9(destination), find the distance to the destination if exists.
+	\item A2: I used a recursion approach. Each time we have a choice to right or down since we start from top-left. If m rows, n cols, computation complexity O(2^max(m, n)). In my "describe approach", i talked about how DP can solve the overlapping sub-problems to decrease the complexity significantly. But I failed 5 test cases out of 15.
+\end{itemize}
+\end{document}
